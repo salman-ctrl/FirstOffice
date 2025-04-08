@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use illuminate\Support\Str;
 
 class OfficeSpace extends Model
 {
@@ -25,6 +26,11 @@ class OfficeSpace extends Model
         'city_id',
     ];
 
+    public function setNameAtribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
     public function photos(): HasMany
     {
         return $this->hasMany(OfficeSpacePhoto::class);
