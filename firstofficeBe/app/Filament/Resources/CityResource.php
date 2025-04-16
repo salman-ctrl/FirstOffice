@@ -42,7 +42,7 @@ class CityResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
 
-                Tables\Columns\ImageColumn::make('ph')
+                Tables\Columns\ImageColumn::make('photo')
             ])
             ->filters([
                 //
