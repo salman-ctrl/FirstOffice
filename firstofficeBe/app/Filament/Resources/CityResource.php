@@ -49,7 +49,7 @@ class CityResource extends Resource
 
             ])
             ->actions([
-
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
