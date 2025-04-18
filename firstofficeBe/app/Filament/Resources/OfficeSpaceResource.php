@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -102,13 +103,18 @@ class OfficeSpaceResource extends Resource
                     ->boolean()
                     ->trueColor('danger')
                     ->falseColor('success')
-                    ->trueIcon('heroicon-o-check-circle')
+                    ->trueIcon('heroicon-o-x-circle')
+                    ->falseIcon('heroicon-o-check-circle')
                     ->label('Available'),
 
             ])
             ->filters([
                 //
+                SelectFilter::make('city_id')
+                    ->label('City')
+                    ->relationship('city', 'name'),
             ])
+
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
