@@ -27,12 +27,15 @@ class OfficeSpaceResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('address')
+                    ->required()
+                    ->maxLength(255),
 
                 Forms\Components\FileUpload::make('thumbnail')
                     ->image()
                     ->required(),
 
-                Forms\Components\TextInput::make('about')
+                Forms\Components\Textarea::make('about')
                     ->required()
                     ->rows(10)
                     ->cols(20),
@@ -79,6 +82,7 @@ class OfficeSpaceResource extends Resource
                         true => 'Not Available',
                         false => 'Available',
                     ])
+                    ->required(),
 
 
             ]);
@@ -89,6 +93,18 @@ class OfficeSpaceResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+
+                Tables\Columns\ImageColumn::make('thumbnail'),
+                Tables\Columns\TextColumn::make('city.name'),
+                Tables\Columns\IconColumn::make('is_full_booked')
+                    ->boolean()
+                    ->trueColor('danger')
+                    ->falseColor('success')
+                    ->trueIcon('heroicon-o-check-circle')
+                    ->label('Available'),
+
             ])
             ->filters([
                 //
