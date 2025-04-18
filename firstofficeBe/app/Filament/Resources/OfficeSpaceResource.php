@@ -24,6 +24,32 @@ class OfficeSpaceResource extends Resource
         return $form
             ->schema([
                 //
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+
+                Forms\Components\FileUpload::make('thumbnail')
+                    ->image()
+                    ->required(),
+
+                Forms\Components\TextInput::make('about')
+                    ->required()
+                    ->rows(10)
+                    ->cols(20),
+
+                Forms\Components\Repeater::make('photos')
+                    ->relationship('photos')
+                    ->schema([
+                        Forms\Components\FileUpload::make('photo')
+                            ->required(),
+                    ]),
+
+                Forms\Components\Repeater::make('benefits')
+                    ->relationship('benefits')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required(),
+                    ]),
             ]);
     }
 

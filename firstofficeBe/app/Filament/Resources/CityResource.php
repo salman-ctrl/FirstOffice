@@ -29,8 +29,7 @@ class CityResource extends Resource
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('photo')
                     ->image()
-                    ->required()
-                    ->directory('cities')
+                    ->required(),
             ]);
     }
 
