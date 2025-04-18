@@ -50,6 +50,37 @@ class OfficeSpaceResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->required(),
                     ]),
+
+                Forms\Components\Select::make('city_id')
+                    ->relationship('city', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
+
+                Forms\Components\TextInput::make('price')
+                    ->required()
+                    ->numeric()
+                    ->prefix('IDR'),
+
+                Forms\Components\TextInput::make('duration')
+                    ->required()
+                    ->numeric()
+                    ->prefix('Days'),
+
+                Forms\Components\Select::make('is_open')
+                    ->options([
+                        true => 'Open',
+                        false => 'Not Open',
+                    ])
+                    ->required(),
+
+                Forms\Components\Select::make('is_full_booked')
+                    ->options([
+                        true => 'Not Available',
+                        false => 'Available',
+                    ])
+
+
             ]);
     }
 
