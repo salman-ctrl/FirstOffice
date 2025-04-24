@@ -92,9 +92,6 @@ class BookingTransactionResource extends Resource
                     ->falseIcon('heroicon-o-x-circle')
                     ->label('Sudah Bayar?'),
 
-
-
-
             ])
             ->filters([
                 //
